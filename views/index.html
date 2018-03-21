@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+List berita | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+	{% for berita in data %}
+		<blockquote >
+			<h2><b>{{ berita.judul|upper }}</b></h2>
+			Kategori:{{ berita.kategori }}<br>
+			<textarea readonly="" style="width: 100%;">{{ berita.isi }}</textarea><br><br>
+			<a href="/test_app/crud.php/edit/{{ berita.id }}" class="btn btn-sm btn-outline-info">Edit</a>
+			<a href="/test_app/crud.php/delete/{{ berita.id }}" class="btn btn-sm btn-outline-danger">Hapus</a>
+		</blockquote>
+		<hr>
+	{% endfor %}
+{% endblock %} 
+
+{% block widget %}
+	<ul class="list-group">
+		<li class="list-group-item active">Active item</li>
+		<a class="list-group-item" href="/test_app/crud.php/add">Tambah</a>
+		<li class="list-group-item">Third item</li>
+	</ul>
+{% endblock %} 
+
+

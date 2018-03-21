@@ -1,0 +1,8 @@
+{% for berita in data %}
+<blockquote >
+	<h2><b>{{ berita.judul|upper }}</b></h2>
+	Kategori:{{ berita.kategori }}<br>
+	<textarea readonly="" style="width: 100%;">{{ berita.isi }}</textarea>
+</blockquote>
+<hr>
+{% endfor %} 

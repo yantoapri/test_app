@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+List berita | {{ parent() }}
+{% endblock %}
+
+{% block content %}
+	{% set url='/test_app/crud.php/simpan' %}
+	{% if data is not empty %} {% set url='/test_app/crud.php/update/'~id %} {% endif %}
+	<form action="{{ url }}" method="POST" >
+		<h3>{{ title }}</h3>
+		Judul
+		<input type="text" placeholder="Judul" name="judul" {% if data is not empty %} value="{{ data.judul }}" {% endif %} class="form-control"><br>
+		Kategori
+		<select name="kat" class="form-control">
+			<option value="">---Pilih Kategori---</option>
+			
+			{% for kat in kategori %}
+			<option value="{{ kat.id }} " {{ (kat.id == data.id_kat) ? 'selected' }} > {{ kat.kategori }}</option>
+			{% endfor %}
+		</select><br>
+		Isi 
+		<textarea class="form-control" name="isi" rows="5">{% if data is not empty %} {{ data.isi }} {% endif %}</textarea><br>
+		<button type="submit" class="btn btn-sm btn-outline-success">Simpan</button>
+	</form>
+{% endblock %} 
+
+{% block widget %}
+	<ul class="list-group">
+		<li class="list-group-item active">Active item</li>
+		<a class="list-group-item" href="/test_app/crud.php/add">Tambah</a>
+		<li class="list-group-item">Third item</li>
+	</ul>
+{% endblock %} 
+
+
